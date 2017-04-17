@@ -1,0 +1,46 @@
+#!/bin/sh
+# cis-linux-simple: script to audit linux using cis benchmark - toanhv2@fpt.com.vn
+
+#===============================================================================
+# Color constant
+#===============================================================================
+BLUE="[0;34m"
+PURPLE="[0;35m"
+CYAN="[0;36m"
+GRAY="[0;37m"
+LIGHTBLUE="[0;94m"
+RED="[1;31m"
+GREEN="[1;32m"
+YELLOW="[1;33m"
+MAGENTA="[1;35m"
+WHITE="[1;37m"
+NORMAL="[0;39m"
+
+#===============================================================================
+# Declarations
+#===============================================================================
+PROGRAM="FTEL CIS LINUX"
+
+TESTCOMPLIANCE=""
+TESTLEVEL=""
+TESTPROFILE=""
+PROFILEDIR="${WORKDIR}/profile"
+TESTINPUT="${WORKDIR}/input.csv"
+TESTREPORTCSV="${WORKDIR}/report.csv"
+TESTDATETIME=`date +"%A, %d %b %Y %H:%M:%S %z"`
+TESTSCORE=0
+TESTTOTALSCORE=0
+TESTCOUNT=0
+
+OS=""
+OS_NAME=""
+OS_FULLNAME=""
+OS_VERSION=""
+LINUX_VERSION=""
+HARDWARE=""
+HOMEDIRS=""
+OS_KERNELVERSION_FULL=""
+OS_KERNELVERSION=""
+HOSTNAME=""
+IPADDR=$(ip -4 route get 8.8.8.8 | awk '{print $7}' | tr -d '\n')
+
