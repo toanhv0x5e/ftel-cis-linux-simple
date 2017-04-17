@@ -1,0 +1,255 @@
+#!/bin/sh
+#===============================================================================
+#
+#         FILE: cis-run
+#        USAGE: ./cis-run
+#  DESCRIPTION: script to automated audit UNIX-like system
+#
+#===============================================================================
+    if [[ $EUID -ne 0 ]]; then
+        echo "cis-run: This script must be run as root" 1>&2
+        exit 1
+    fi
+
+    WORKDIR=$(pwd)
+    INCLUDEDIR="${WORKDIR}/include"
+    
+    TESTCOMPLIANCE=""
+    TESTLEVEL=""
+    TESTDATABASE=""
+    TESTINPUT="${WORKDIR}/input.csv"
+    TESTREPORTCSV="${WORKDIR}/report.csv"
+    TESTDATETIME=`date +"%A, %d %b %Y %H:%M:%S %z"`
+    
+    OS=""
+    OS_NAME=""
+    OS_FULLNAME=""
+    OS_VERSION=""
+    LINUX_VERSION=""
+    HARDWARE=""
+    HOMEDIRS=""
+    OS_KERNELVERSION_FULL=""
+    OS_KERNELVERSION=""
+    HOSTNAME=""
+    IPADDR=$(ip -4 route get 8.8.8.8 | awk '{print $7}' | tr -d '\n')
+
+#===============================================================================
+# Include functions
+#===============================================================================
+    if [ -f "${INCLUDEDIR}/functions" ]; then source ${INCLUDEDIR}/functions; else echo -e "cis-run: Include files does not exist"; exit 1; fi
+
+#===============================================================================
+# Test case: Score 96/160 (Level1: 189)+ Score 9/32 (Level2: 34) = 223
+#===============================================================================
+    if [ "${OS_NAME}" = "CentOS" ]; then
+        TEMP1=$(rpm -qa \*-release | grep -Ei "oracle|redhat|centos" | cut -d"-" -f3)
+        case ${TEMP1} in
+            6)
+                TESTDATABASE="${WORKDIR}/profile/centos6.csv"
+                if [ -f "${INCLUDEDIR}/centos6" ]; then source ${INCLUDEDIR}/centos6; else echo -e "cis-run: Include files does not exist"; exit 1; fi
+            ;;
+
+            7)
+                TESTDATABASE="${WORKDIR}/profile/centos7.csv"
+                if [ -f "${INCLUDEDIR}/centos7" ]; then source ${INCLUDEDIR}/centos7; else echo -e "cis-run: Include files does not exist"; exit 1; fi
+            ;;
+
+            *)
+                echo -e "cis-run: Operating system is not supported"
+                exit 1
+            ;;
+        esac
+    else
+        echo -e "cis-run: Operating system is not supported"
+        exit 1
+    fi
+
+    # Check database files for exist
+    if [ ! -f "${TESTDATABASE}" ]; then echo -e "cis-run: Database files does not exist"; exit 1; fi
+
+    TESTSCORE=0
+    TESTTOTALSCORE=0
+    TESTDISABLE=0
+    TESTCOUNT=0
+
+    TESTCOMPLIANCE=$(awk -F, '{if (NR==1) print $1}' ${TESTDATABASE} 2> /dev/null)
+    TESTCOMPLIANCE=$(echo "${TESTCOMPLIANCE:2}" 2> /dev/null)
+
+    DisplayHeader
+
+    ReportReload
+    ReportLine "# ${TESTCOMPLIANCE}"
+    ReportLine "# Level ${TESTLEVEL}"
+    ReportLine "# IP Address: ${IPADDR}"
+    ReportLine "# Testcase" "Score" "Result"
+
+    # Ignore for commented lines
+    grep -v "^#" ${TESTDATABASE} > ${TESTINPUT} 2> /dev/null
+    LINE=$(cat ${TESTINPUT} 2> /dev/null | wc -l 2> /dev/null)
+    
+    SUBTESTSCORE=1
+    TEMPSECTION=""
+    TEMPSUBSECTION=""
+
+    while IFS=, read f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11
+    do
+        if [ ! "${f1}" = "${TEMPSECTION}"  ]; then
+            echo -e "\n[+] ${YELLOW}${f1}${NORMAL}\n----------------------------------------"
+            ReportLine "${f1}"
+            TEMPSECTION="${f1}"
+        fi
+
+        # If testcase type is not specific, this testcase is disabled
+        if [ "${f10}" = "" ]; then TESTDISABLE=$((${TESTDISABLE} + 1)); fi
+
+        # Unalias temp current command to avoid duplicate
+        unalias current_cmd 2> /dev/null
+
+        # Only test level 1 or 2
+        if [ "${f5}" = "${TESTLEVEL}" ]; then
+            # Indent base on section level
+            INDENT=2
+            if [ ! "${f2}" = "${TEMPSUBSECTION}"  ]; then
+                echo -e "  - ${f2}"
+                ReportLine "${f2}"
+                INDENT=4
+                TEMPSUBSECTION="${f2}"
+            else
+                INDENT=4
+            fi
+            # Testcase classification
+            case ${f10} in
+                TESTCASE_NULL)
+                    alias current_cmd="${f8}"
+                    FIND=$(current_cmd 2> /dev/null)
+                    #FIND=$(current_cmd)
+
+                    if [ "${FIND}" =  "" ]; then
+                        if [ "${f7}" -lt "${f6}" ]; then
+                            continue
+                        else if [ "${SUBTESTSCORE}" = 1 ]; then
+                                AddScore ${f4}
+                                TotalScore ${f4}
+                                Display --indent "${INDENT}" --text "- ${f3}" --result "PASS" --color GREEN
+                                ReportLine "${f3}" "${f4}" "PASS"
+                            else
+                                TotalScore ${f4}
+                                Display --indent "${INDENT}" --text "- ${f3}" --result "FAIL" --color RED
+                                ReportLine "${f3}" "${f4}" "FAIL"
+                            fi
+                        fi
+                    else
+                        if [ "${f7}" -lt "${f6}" ]; then
+                            SUBTESTSCORE=$((${SUBTESTSCORE} - 1))
+                            continue
+                        else
+                            TotalScore ${f4}
+                            Display --indent "${INDENT}" --text "- ${f3}" --result "FAIL" --color RED
+                            ReportLine "${f3}" "${f4}" "FAIL"
+                        fi
+                    fi
+                ;;
+
+                TESTCASE_NOTNULL)
+                    alias current_cmd="${f8}"
+                    FIND=$(current_cmd 2> /dev/null)
+                    #FIND=$(current_cmd)
+
+                    if [ ! "${FIND}" =  "" ]; then
+                        if [ "${f7}" -lt "${f6}" ]; then
+                            continue
+                        else if [ "${SUBTESTSCORE}" = 1 ]; then
+                                AddScore ${f4}
+                                TotalScore ${f4}
+                                Display --indent "${INDENT}" --text "- ${f3}" --result "PASS" --color GREEN
+                                ReportLine "${f3}" "${f4}" "PASS"
+                            else
+                                TotalScore ${f4}
+                                Display --indent "${INDENT}" --text "- ${f3}" --result "FAIL" --color RED
+                                ReportLine "${f3}" "${f4}" "FAIL"
+                            fi
+                        fi
+                    else
+                        if [ "${f7}" -lt "${f6}" ]; then
+                            SUBTESTSCORE=$((${SUBTESTSCORE} - 1))
+                            continue
+                        else
+                            TotalScore ${f4}
+                            Display --indent "${INDENT}" --text "- ${f3}" --result "FAIL" --color RED
+                            ReportLine "${f3}" "${f4}" "FAIL"
+                        fi
+                    fi
+                ;;
+
+                TESTCASE_EQUAL)
+                    alias current_cmd="${f8}"
+                    FIND=$(current_cmd 2> /dev/null | grep "${f9}" 2> /dev/null)
+                    #FIND=$(current_cmd | grep "${f9}")
+                    
+                    if [ ! "${FIND}" =  "" ]; then
+                        if [ "${f7}" -lt "${f6}" ]; then
+                            continue
+                        else if [ "${SUBTESTSCORE}" = 1 ]; then
+                                AddScore ${f4}
+                                TotalScore ${f4}
+                                Display --indent "${INDENT}" --text "- ${f3}" --result "PASS" --color GREEN
+                                ReportLine "${f3}" "${f4}" "PASS"
+                            else
+                                TotalScore ${f4}
+                                Display --indent "${INDENT}" --text "- ${f3}" --result "FAIL" --color RED
+                                ReportLine "${f3}" "${f4}" "FAIL"
+                            fi
+                        fi
+                    else
+                        if [ "${f7}" -lt "${f6}" ]; then
+                            SUBTESTSCORE=$((${SUBTESTSCORE} - 1))
+                            continue
+                        else
+                            TotalScore ${f4}
+                            Display --indent "${INDENT}" --text "- ${f3}" --result "FAIL" --color RED
+                            ReportLine "${f3}" "${f4}" "FAIL"
+                        fi
+                    fi
+                ;;
+
+                *)
+                    # Disabled
+                    TotalScore ${f4}
+                    Display --indent "${INDENT}" --text "- ${f3}" --result "N/A " --color WHITE
+                    ReportLine "${f3}" "${f4}" "N/A"
+                ;;
+            esac
+            SUBTESTSCORE=1
+            TEMPSUBSECTION="${f2}"
+            TESTCOUNT=$((TESTCOUNT + 1))
+        fi
+
+    done < ${TESTINPUT}
+
+    # Summary
+    # If no test score has been found, set value to 1
+    if [ ${TESTSCORE} -eq 0 ]; then TESTSCORE=1; TESTTOTALSCORE=100; fi
+    PERCENTCOMPLIANT=$((TESTSCORE * 100 / TESTTOTALSCORE))
+    echo -e "\n================================================================================\n"
+    echo -e "  ${WHITE}${TESTCOMPLIANCE}${NORMAL}"
+    echo
+    echo -e "  Level ${TESTLEVEL}"
+    echo -e "  ${TESTDATETIME}"
+    echo -e "  IP Address          : ${WHITE}${IPADDR}${NORMAL}"
+    echo
+    echo -e "  ${WHITE}Assessment Summary${NORMAL}"
+    echo -e "  - Total Testcase    : ${WHITE}${TESTCOUNT}${NORMAL}"
+    echo -e "  - Total Score       : ${WHITE}${TESTSCORE}/${TESTTOTALSCORE}${NORMAL}"
+    echo -e "  - Percent Compliant : ${WHITE}${PERCENTCOMPLIANT}%${NORMAL}"
+    echo
+    echo -e "  ${WHITE}Files${NORMAL}"
+    echo -e "  - Report CSV        : ${WHITE}${TESTREPORTCSV}${NORMAL}"
+    echo -e "\n================================================================================\n"
+
+    ReportLine
+    ReportLine "Total Score" "" "${TESTSCORE}/${TESTTOTALSCORE}"
+    ReportLine "Percent Compliant" "" "${PERCENTCOMPLIANT}%"
+    rm -rf ${TESTINPUT} 2> /dev/null
+
+#===============================================================================
+# cis-run

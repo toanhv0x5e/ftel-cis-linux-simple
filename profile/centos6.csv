@@ -1,0 +1,272 @@
+# CIS CentOS Linux 6 Benchmark v2.0.2 - 01-31-2017,,,,,,,,,,
+# Category, SubCategoryLevel1, SubCategoryLevel2, Score, Level,Quantity,SubTest,Command,Output,Type,Parse (1=Y)
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.1 Ensure mounting of cramfs filesystems is disabled,1,1,2,1,modprobe -n -v cramfs,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.1 Ensure mounting of cramfs filesystems is disabled,1,1,2,2,lsmod | grep cramfs,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.2 Ensure mounting of freevxfs filesystems is disabled,1,1,2,1,modprobe -n -v freevxfs,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.2 Ensure mounting of freevxfs filesystems is disabled,1,1,2,2,lsmod | grep freevxfs,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.3 Ensure mounting of jffs2 filesystems is disabled,1,1,2,1,modprobe -n -v jffs2,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.3 Ensure mounting of jffs2 filesystems is disabled,1,1,2,2,lsmod | grep jffs2,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.4 Ensure mounting of hfs filesystems is disabled,1,1,2,1,modprobe -n -v hfs,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.4 Ensure mounting of hfs filesystems is disabled,1,1,2,2,lsmod | grep hfs,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.5 Ensure mounting of hfsplus filesystems is disabled,1,1,2,1,modprobe -n -v hfsplus,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.5 Ensure mounting of hfsplus filesystems is disabled,1,1,2,2,lsmod | grep hfsplus,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.6 Ensure mounting of squashfs filesystems is disabled,1,1,2,1,modprobe -n -v squashfs,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.6 Ensure mounting of squashfs filesystems is disabled,1,1,2,2,lsmod | grep squashfs,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.7 Ensure mounting of udf filesystems is disabled,1,1,2,1,modprobe -n -v udf,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.7 Ensure mounting of udf filesystems is disabled,1,1,2,2,lsmod | grep udf,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.8 Ensure mounting of FAT filesystems is disabled,1,1,2,1,modprobe -n -v vfat,install /bin/true,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.1.8 Ensure mounting of FAT filesystems is disabled,1,1,2,2,lsmod | grep vfat,null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.2 Ensure separate partition exists for /tmp,1,2,1,1,mount | grep /tmp,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.3 Ensure nodev option set on /tmp partition,1,1,1,1,mount | grep /tmp,nodev,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.4 Ensure nosuid option set on /tmp partition,1,1,1,1,mount | grep /tmp,nodev,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.5 Ensure noexec option set on /tmp partition,1,1,1,1,mount | grep /tmp,noexec,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.6 Ensure separate partition exists for /var,1,2,1,1,mount | grep /var,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.7 Ensure separate partition exists for /var/tmp,1,2,1,1,mount | grep /var/tmp,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.8 Ensure nodev option set on /var/tmp partition,1,1,1,1,mount | grep /var/tmp,nodev,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.9 Ensure nosuid option set on /var/tmp partition,1,1,1,1,mount | grep /var/tmp,nosuid,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.10 Ensure noexec option set on /var/tmp partition,1,1,1,1,mount | grep /var/tmp,noexec,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.11 Ensure separate partition exists for /var/log,1,2,1,1,mount | grep /var/log,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.12 Ensure separate partition exists for /var/log/audit,1,2,1,1,mount | grep /var/log/audit,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.13 Ensure separate partition exists for /home,1,2,1,1,mount | grep /home,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.14 Ensure nodev option set on /home partition,1,1,1,1,mount | grep /home,nodev,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.15 Ensure nodev option set on /dev/shm partition,1,1,1,1,mount | grep /dev/shm,nodev,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.16 Ensure nosuid option set on /dev/shm partition,1,1,1,1,mount | grep /dev/shm,nosuid,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.17 Ensure noexec option set on /dev/shm partition,1,1,1,1,mount | grep /dev/shm,noexec,TESTCASE_EQUAL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.18 Ensure nodev option set on removable media partitions,0,1,1,1,mount | grep media,nodev,TESTCASE_EQUAL,0
+1 Initial Setup,1.1 Filesystem Configuration,1.1.19 Ensure nosuid option set on removable media partitions,0,1,1,1,mount | grep media,nosuid,TESTCASE_EQUAL,0
+1 Initial Setup,1.1 Filesystem Configuration,1.1.20 Ensure noexec option set on removable media partitions,0,1,1,1,mount | grep media,noexec,TESTCASE_EQUAL,0
+1 Initial Setup,1.1 Filesystem Configuration,1.1.21 Ensure sticky bit is set on all world-writable directories,1,1,1,1,df --local -P | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\),null,TESTCASE_NULL,1
+1 Initial Setup,1.1 Filesystem Configuration,1.1.22 Disable Automounting,1,1,1,1,chkconfig --list autofs 2> /dev/null | grep on,null,TESTCASE_NULL,1
+1 Initial Setup,1.2 Configure Software Updates,1.2.1 Ensure package manager repositories are configured,0,1,1,1,yum repolist 2> /dev/null | echo $?,0,TESTCASE_EQUAL,1
+1 Initial Setup,1.2 Configure Software Updates,1.2.2 Ensure GPG keys are configured,0,1,1,1,rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\\n',CentOS 6 Official Signing Key,TESTCASE_EQUAL,1
+1 Initial Setup,1.2 Configure Software Updates,1.2.3 Ensure gpgcheck is globally activated,1,1,2,1,grep ^gpgcheck /etc/yum.conf 2> /dev/null | grep -v gpgcheck=1,null,TESTCASE_NULL,1
+1 Initial Setup,1.2 Configure Software Updates,1.2.3 Ensure gpgcheck is globally activated,1,1,2,2,grep ^gpgcheck /etc/yum.repos.d/* 2> /dev/null | grep -v gpgcheck=1,null,TESTCASE_NULL,1
+1 Initial Setup,1.3 Filesystem Integrity Checking,1.3.1 Ensure AIDE is installed,1,1,1,1,rpm -q aide,aide-,TESTCASE_EQUAL,1
+1 Initial Setup,1.3 Filesystem Integrity Checking,1.3.2 Ensure filesystem integrity is regularly checked,1,1,1,1,crontab -u root -l 2> /dev/null | grep aide,not null,TESTCASE_NOTNULL,1
+1 Initial Setup,1.4 Secure Boot Settings,1.4.1 Ensure permissions on bootloader config are configured,1,1,1,1,stat -c '%a' /boot/grub/grub.conf,600,TESTCASE_EQUAL,1
+1 Initial Setup,1.4 Secure Boot Settings,1.4.2 Ensure bootloader password is set,1,1,1,1,grep '^password' /boot/grub/grub.conf,password --md5 ,TESTCASE_EQUAL,1
+1 Initial Setup,1.4 Secure Boot Settings,1.4.3 Ensure authentication required for single user mode,1,1,1,1,grep '^SINGLE' /etc/sysconfig/init,SINGLE=/sbin/sulogin,TESTCASE_EQUAL,1
+1 Initial Setup,1.4 Secure Boot Settings,1.4.4 Ensure interactive boot is not enabled,1,1,1,1,grep '^PROMPT=' /etc/sysconfig/init,PROMPT=no,TESTCASE_EQUAL,1
+1 Initial Setup,1.5 Additional Process Hardening,1.5.1 Ensure core dumps are restricted,1,1,2,1,grep "hard core" /etc/security/limits.conf /etc/security/limits.d/*,* hard core 0,TESTCASE_EQUAL,1
+1 Initial Setup,1.5 Additional Process Hardening,1.5.1 Ensure core dumps are restricted,1,1,2,2,sysctl fs.suid_dumpable,fs.suid_dumpable = 0,TESTCASE_EQUAL,1
+1 Initial Setup,1.5 Additional Process Hardening,1.5.2 Ensure XD/NX support is enabled,0,1,1,1,dmesg | grep NX,NX (Execute Disable) protection: active,TESTCASE_EQUAL,1
+1 Initial Setup,1.5 Additional Process Hardening,1.5.3 Ensure address space layout randomization (ASLR) is enabled,1,1,1,1,sysctl kernel.randomize_va_space,kernel.randomize_va_space = 2,TESTCASE_EQUAL,1
+1 Initial Setup,1.5 Additional Process Hardening,1.5.4 Ensure prelink is disabled,1,1,1,1,rpm -q prelink,not installed,TESTCASE_EQUAL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.1 Ensure SELinux is not disabled in bootloader configuration,1,2,1,1,grep '^\\s*kernel' /boot/grub/grub.conf | grep 'selinux=0' | grep 'enforcing=0',null,TESTCASE_NULL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.2 Ensure the SELinux state is enforcing,1,2,2,1,grep SELINUX=enforcing /etc/selinux/config,SELINUX=enforcing,TESTCASE_EQUAL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.2 Ensure the SELinux state is enforcing,1,2,2,2,sestatus | grep enabled,not null,TESTCASE_NOTNULL,0
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.3 Ensure SELinux policy is configured,1,2,2,1,grep SELINUXTYPE=targeted /etc/selinux/config,SELINUXTYPE=targeted,TESTCASE_EQUAL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.3 Ensure SELinux policy is configured,1,2,2,2,sestatus | grep targeted,not null,TESTCASE_NOTNULL,0
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.4 Ensure SETroubleshoot is not installed,1,2,1,1,rpm -q setroubleshoot,not installed,TESTCASE_EQUAL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.5 Ensure the MCS Translation Service (mcstrans) is not installed,1,2,1,1,rpm -q mcstrans,not installed,TESTCASE_EQUAL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.1.6 Ensure no unconfined daemons exist,1,2,1,1,ps -eZ | egrep 'initrc' | egrep -vw 'tr|ps|egrep|bash|awk' | tr ':' ' ' | awk '{ print $NF }',null,TESTCASE_NULL,1
+1 Initial Setup,1.6 Mandatory Access Control,1.6.2 Ensure SELinux is installed,1,2,1,1,rpm -q libselinux,libselinux-,TESTCASE_EQUAL,1
+1 Initial Setup,1.7 Warning Banners,1.7.1.1 Ensure message of the day is configured properly,1,1,1,1,egrep '(\\\\v|\\\\r|\\\\m|\\\\s)' /etc/motd,null,TESTCASE_NULL,1
+1 Initial Setup,1.7 Warning Banners,1.7.1.2 Ensure local login warning banner is configured properly,0,1,1,1,egrep '(\\\\v|\\\\r|\\\\m|\\\\s)' /etc/issue,null,TESTCASE_NULL,1
+1 Initial Setup,1.7 Warning Banners,1.7.1.3 Ensure remote login warning banner is configured properly,0,1,1,1,egrep '(\\\\v|\\\\r|\\\\m|\\\\s)' /etc/issue.net,null,TESTCASE_NULL,1
+1 Initial Setup,1.7 Warning Banners,1.7.1.4 Ensure permissions on /etc/motd are configured,0,1,1,1,stat -c '%a' /etc/motd,644,TESTCASE_EQUAL,1
+1 Initial Setup,1.7 Warning Banners,1.7.1.5 Ensure permissions on /etc/issue are configured,1,1,1,1,stat -c '%a' /etc/issue,644,TESTCASE_EQUAL,1
+1 Initial Setup,1.7 Warning Banners,1.7.1.6 Ensure permissions on /etc/issue.net are configured,0,1,1,1,stat -c '%a' /etc/issue.net,644,TESTCASE_EQUAL,1
+1 Initial Setup,1.7 Warning Banners,1.7.2 Ensure GDM login banner is configured,1,1,1,1,grep banner-message-enable=true /etc/dconf/db/gdm.d/01-banner-message,banner-message-enable=true,TESTCASE_EQUAL,0
+1 Initial Setup,1.8 Ensure updates; patches; and additional security software are installed,1.8 Ensure updates; patches; and additional security software are installed,0,1,1,1,yum check-update 2> /dev/null | grep -,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.1 Ensure chargen services are not enabled,1,1,2,1,chkconfig --list chargen-dgram 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.1 Ensure chargen services are not enabled,1,1,2,2,chkconfig --list chargen-stream 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.2 Ensure daytime services are not enabled,1,1,2,1,chkconfig --list daytime-dgram 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.2 Ensure daytime services are not enabled,1,1,2,2,chkconfig --list daytime-stream 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.3 Ensure discard services are not enabled,1,1,2,1,chkconfig --list discard-dgram 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.3 Ensure discard services are not enabled,1,1,2,2,chkconfig --list discard-stream 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.4 Ensure echo services are not enabled,1,1,2,1,chkconfig --list echo-dgram 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.4 Ensure echo services are not enabled,1,1,2,2,chkconfig --list echo-stream 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.5 Ensure time services are not enabled,1,1,2,1,chkconfig --list time-dgram 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.5 Ensure time services are not enabled,1,1,2,2,chkconfig --list time-stream 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.6 Ensure rsh server is not enabled,1,1,3,1,chkconfig --list exec 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.6 Ensure rsh server is not enabled,1,1,3,2,chkconfig --list rlogin 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.6 Ensure rsh server is not enabled,1,1,3,3,chkconfig --list rsh 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.1 inetd Services,2.1.7 Ensure talk server is not enabled,1,1,1,1,chkconfig --list talk 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.1 inetd Services,2.1.8 Ensure telnet server is not enabled,1,1,1,1,chkconfig --list telnet 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.1 inetd Services,2.1.9 Ensure tftp server is not enabled,1,1,1,1,chkconfig --list tftp 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.1 inetd Services,2.1.10 Ensure rsync service is not enabled,1,1,1,1,chkconfig --list rsync 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.1 inetd Services,2.1.11 Ensure xinetd is not enabled,1,1,1,1,chkconfig --list xinetd 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.1.1 Ensure time synchronization is in use,0,1,1,1,rpm -q ntp chrony 2> /dev/null | grep -v "not installed",not null,TESTCASE_NOTNULL,0
+2 Services,2.2 Special Purpose Services,2.2.1.2 Ensure ntp is configured,1,1,3,1,grep ^restrict /etc/ntp.conf,not null,TESTCASE_NOTNULL,0
+2 Services,2.2 Special Purpose Services,2.2.1.2 Ensure ntp is configured,1,1,3,2,grep ^server /etc/ntp.conf,not null,TESTCASE_NOTNULL,0
+2 Services,2.2 Special Purpose Services,2.2.1.2 Ensure ntp is configured,1,1,3,3,grep ^OPTIONS /etc/sysconfig/ntpd,OPTIONS="-u ntp:ntp,TESTCASE_EQUAL,0
+2 Services,2.2 Special Purpose Services,2.2.1.3 Ensure chrony is configured,1,1,2,1,grep ^server /etc/chrony.conf,not null,TESTCASE_NOTNULL,0
+2 Services,2.2 Special Purpose Services,2.2.1.3 Ensure chrony is configured,1,1,2,2,grep ^OPTIONS /etc/sysconfig/chronyd,OPTIONS="-u chrony,TESTCASE_EQUAL,0
+2 Services,2.2 Special Purpose Services,2.2.2 Ensure X Window System is not installed,1,1,1,1,rpm -qa xorg-x11*,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.3 Ensure Avahi Server is not enabled,1,1,1,1,chkconfig --list avahi-daemon 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.4 Ensure CUPS is not enabled,1,1,1,1,chkconfig --list cups 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.5 Ensure DHCP Server is not enabled,1,1,1,1,chkconfig --list dhcpd 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.6 Ensure LDAP server is not enabled,1,1,1,1,chkconfig --list slapd 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.7 Ensure NFS and RPC are not enabled,1,1,2,1,chkconfig --list nfs 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.2 Special Purpose Services,2.2.7 Ensure NFS and RPC are not enabled,1,1,2,2,chkconfig --list rpcbind 2> /dev/null | grep on,null,TESTCASE_NULL,0
+2 Services,2.2 Special Purpose Services,2.2.8 Ensure DNS Server is not enabled,1,1,1,1,chkconfig --list named 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.9 Ensure FTP Server is not enabled,1,1,1,1,chkconfig --list vsftpd 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.10 Ensure HTTP server is not enabled,1,1,1,1,chkconfig --list httpd 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.11 Ensure IMAP and POP3 server is not enabled,1,1,1,1,chkconfig --list dovecot 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.12 Ensure Samba is not enabled,1,1,1,1,chkconfig --list smb 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.13 Ensure HTTP Proxy Server is not enabled,1,1,1,1,chkconfig --list squid 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.14 Ensure SNMP Server is not enabled,1,1,1,1,chkconfig --list snmpd 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.2 Special Purpose Services,2.2.15 Ensure mail transfer agent is configured for local-only mode,1,1,1,1,netstat -an | grep LIST | grep ":25[[:space:]]" | grep -v "127.0.0." | grep -v "::1",null,TESTCASE_NULL,0
+2 Services,2.2 Special Purpose Services,2.2.16 Ensure NIS Server is not enabled,1,1,1,1,chkconfig --list ypserv 2> /dev/null | grep on,null,TESTCASE_NULL,1
+2 Services,2.3 Service Clients,2.3.1 Ensure NIS Client is not installed,1,1,1,1,rpm -q ypbind,not installed,TESTCASE_EQUAL,1
+2 Services,2.3 Service Clients,2.3.2 Ensure rsh client is not installed,1,1,1,1,rpm -q rsh,not installed,TESTCASE_EQUAL,1
+2 Services,2.3 Service Clients,2.3.3 Ensure talk client is not installed,1,1,1,1,rpm -q talk,not installed,TESTCASE_EQUAL,1
+2 Services,2.3 Service Clients,2.3.4 Ensure telnet client is not installed,1,1,1,1,rpm -q telnet,not installed,TESTCASE_EQUAL,1
+2 Services,2.3 Service Clients,2.3.5 Ensure LDAP client is not installed,1,1,1,1,rpm -q openldap-clients,not installed,TESTCASE_EQUAL,1
+3 Network Configuration,3.1 Network Parameters (Host Only),3.1.1 Ensure IP forwarding is disabled,1,1,1,1,sysctl net.ipv4.ip_forward,net.ipv4.ip_forward = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.1 Network Parameters (Host Only),3.1.2 Ensure packet redirect sending is disabled,1,1,2,1,sysctl net.ipv4.conf.all.send_redirects,net.ipv4.conf.all.send_redirects = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.1 Network Parameters (Host Only),3.1.2 Ensure packet redirect sending is disabled,1,1,2,2,sysctl net.ipv4.conf.default.send_redirects,net.ipv4.conf.default.send_redirects = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.1 Ensure source routed packets are not accepted,1,1,2,1,sysctl net.ipv4.conf.all.accept_source_route,net.ipv4.conf.all.accept_source_route = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.1 Ensure source routed packets are not accepted,1,1,2,2,sysctl net.ipv4.conf.default.accept_source_route,net.ipv4.conf.default.accept_source_route = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.2 Ensure ICMP redirects are not accepted,1,1,2,1,sysctl net.ipv4.conf.all.accept_redirects,net.ipv4.conf.all.accept_redirects = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.2 Ensure ICMP redirects are not accepted,1,1,2,2,sysctl net.ipv4.conf.default.accept_redirects,net.ipv4.conf.default.accept_redirects = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.3 Ensure secure ICMP redirects are not accepted,1,1,2,1,sysctl net.ipv4.conf.all.secure_redirects,net.ipv4.conf.all.secure_redirects = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.3 Ensure secure ICMP redirects are not accepted,1,1,2,2,sysctl net.ipv4.conf.default.secure_redirects,net.ipv4.conf.default.secure_redirects = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.4 Ensure suspicious packets are logged,1,1,2,1,sysctl net.ipv4.conf.all.log_martians,net.ipv4.conf.all.log_martians = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.4 Ensure suspicious packets are logged,1,1,2,2,sysctl net.ipv4.conf.default.log_martians,net.ipv4.conf.default.log_martians = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.5 Ensure broadcast ICMP requests are ignored,1,1,1,1,sysctl net.ipv4.icmp_echo_ignore_broadcasts,net.ipv4.icmp_echo_ignore_broadcasts = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.6 Ensure bogus ICMP responses are ignored,1,1,1,1,sysctl net.ipv4.icmp_ignore_bogus_error_responses,net.ipv4.icmp_ignore_bogus_error_responses = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.7 Ensure Reverse Path Filtering is enabled,1,1,2,1,sysctl net.ipv4.conf.all.rp_filter,net.ipv4.conf.all.rp_filter = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.7 Ensure Reverse Path Filtering is enabled,1,1,2,2,sysctl net.ipv4.conf.default.rp_filter,net.ipv4.conf.default.rp_filter = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.2 Network Parameters (Host and Router),3.2.8 Ensure TCP SYN Cookies is enabled,1,1,1,1,sysctl net.ipv4.tcp_syncookies,net.ipv4.tcp_syncookies = 1,TESTCASE_EQUAL,1
+3 Network Configuration,3.3 IPv6,3.3.1 Ensure IPv6 router advertisements are not accepted,1,1,2,1,sysctl net.ipv6.conf.all.accept_ra,net.ipv6.conf.all.accept_ra = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.3 IPv6,3.3.1 Ensure IPv6 router advertisements are not accepted,1,1,2,2,sysctl net.ipv6.conf.default.accept_ra,net.ipv6.conf.default.accept_ra = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.3 IPv6,3.3.2 Ensure IPv6 redirects are not accepted,1,1,2,1,sysctl net.ipv6.conf.all.accept_redirects,net.ipv6.conf.all.accept_redirect = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.3 IPv6,3.3.2 Ensure IPv6 redirects are not accepted,1,1,2,2,sysctl net.ipv6.conf.default.accept_redirects,net.ipv6.conf.default.accept_redirect = 0,TESTCASE_EQUAL,1
+3 Network Configuration,3.3 IPv6,3.3.3 Ensure IPv6 is disabled,0,1,1,1,modprobe -c | grep ipv6,options ipv6 disable=1,TESTCASE_EQUAL,1
+3 Network Configuration,3.4 TCP Wrappers,3.4.1 Ensure TCP Wrappers is installed,1,1,2,1,rpm -q tcp_wrappers | grep -v 'tcp_wrappers-',null,TESTCASE_NULL,0
+3 Network Configuration,3.4 TCP Wrappers,3.4.1 Ensure TCP Wrappers is installed,1,1,2,2,rpm -q tcp_wrappers-libs | grep -v 'tcp_wrappers-libs-',null,TESTCASE_NULL,0
+3 Network Configuration,3.4 TCP Wrappers,3.4.2 Ensure /etc/hosts.allow is configured,1,1,1,1,cat /etc/hosts.allow,ALL:,TESTCASE_EQUAL,1
+3 Network Configuration,3.4 TCP Wrappers,3.4.3 Ensure /etc/hosts.deny is configured,1,1,1,1,cat /etc/hosts.deny,ALL: ALL,TESTCASE_EQUAL,1
+3 Network Configuration,3.4 TCP Wrappers,3.4.4 Ensure permissions on /etc/hosts.allow are configured,1,1,1,1,stat -c '%a' /etc/hosts.allow,644,TESTCASE_EQUAL,1
+3 Network Configuration,3.4 TCP Wrappers,3.4.5 Ensure permissions on /etc/hosts.deny are configured,1,1,1,1,stat -c '%a' /etc/hosts.deny,644,TESTCASE_EQUAL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.1 Ensure DCCP is disabled,0,1,2,1,modprobe -n -v dccp,install /bin/true,TESTCASE_EQUAL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.1 Ensure DCCP is disabled,0,1,2,2,lsmod | grep dccp,null,TESTCASE_NULL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.2 Ensure SCTP is disabled,0,1,2,1,modprobe -n -v sctp,install /bin/true,TESTCASE_EQUAL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.2 Ensure SCTP is disabled,0,1,2,2,lsmod | grep sctp,null,TESTCASE_NULL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.3 Ensure RDS is disabled,0,1,2,1,modprobe -n -v rds,install /bin/true,TESTCASE_EQUAL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.3 Ensure RDS is disabled,0,1,2,2,lsmod | grep rds,null,TESTCASE_NULL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.4 Ensure TIPC is disabled,0,1,2,1,modprobe -n -v tipc,install /bin/true,TESTCASE_EQUAL,1
+3 Network Configuration,3.5 Uncommon Network Protocols,3.5.4 Ensure TIPC is disabled,0,1,2,2,lsmod | grep tipc,null,TESTCASE_NULL,1
+3 Network Configuration,3.6 Firewall Configuration,3.6.1 Ensure iptables is installed,1,1,1,1,rpm -q iptables,iptables-,TESTCASE_EQUAL,1
+3 Network Configuration,3.6 Firewall Configuration,3.6.2 Ensure default deny firewall policy,1,1,1,1,iptables -L 2> /dev/null | grep "policy DROP" | wc -l,3,TESTCASE_EQUAL,0
+3 Network Configuration,3.6 Firewall Configuration,3.6.3 Ensure loopback traffic is configured,1,1,1,1,iptables -L INPUT -v -n,not null,,0
+3 Network Configuration,3.6 Firewall Configuration,3.6.4 Ensure outbound and established connections are configured,0,1,1,1,iptables -L -v -n,ESTABLISHED -j ACCEPT,TESTCASE_EQUAL,0
+3 Network Configuration,3.6 Firewall Configuration,3.6.5 Ensure firewall rules exist for all open ports,1,1,1,1,iptables -L INPUT -v -n,state NEW,TESTCASE_EQUAL,0
+3 Network Configuration,3.7 Ensure wireless interfaces are disabled,3.7 Ensure wireless interfaces are disabled,0,1,1,1,,,,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.1.1 Ensure audit log storage size is configured,0,2,1,1,grep max_log_file /etc/audit/auditd.conf,max_log_file =,TESTCASE_EQUAL,1
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.1.2 Ensure system is disabled when audit logs are full,1,2,3,1,grep space_left_action /etc/audit/auditd.conf,space_left_action = email,TESTCASE_EQUAL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.1.2 Ensure system is disabled when audit logs are full,1,2,3,2,grep action_mail_acct /etc/audit/auditd.conf,action_mail_acct = root,TESTCASE_EQUAL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.1.2 Ensure system is disabled when audit logs are full,1,2,3,3,grep admin_space_left_action /etc/audit/auditd.conf,admin_space_left_action = halt,TESTCASE_EQUAL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.1.3 Ensure audit logs are not automatically deleted,1,2,1,1,grep max_log_file_action /etc/audit/auditd.conf,max_log_file_action = keep_logs,TESTCASE_EQUAL,1
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.2 Ensure auditd service is enabled,1,2,1,1,chkconfig --list auditd 2> /dev/null | grep on,not null,TESTCASE_NOTNULL,1
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.3 Ensure auditing for processes that start prior to auditd is enabled,1,2,1,1,grep "^\\s*kernel" /boot/grub/grub.conf 2> /dev/null | grep -v "audit=1",null,TESTCASE_NULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.4 Ensure events that modify date and time information are collected,1,2,1,1,grep time-change /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.5 Ensure events that modify user/group information are collected,1,2,1,1,grep identity /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.6 Ensure events that modify the system's network environment are collected,1,2,1,1,grep system-locale /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.7 Ensure events that modify the system's Mandatory Access Controls are collected,1,2,1,1,grep MAC-policy /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.8 Ensure login and logout events are collected,1,2,1,1,grep logins /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.9 Ensure session initiation information is collected,1,2,1,1,grep session /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.10 Ensure discretionary access control permission modification events are collected,1,2,1,1,grep perm_mod /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.11 Ensure unsuccessful unauthorized file access attempts are collected,1,2,1,1,grep access /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.12 Ensure use of privileged commands is collected,1,2,1,1,,,,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.13 Ensure successful file system mounts are collected,1,2,1,1,grep mounts /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.14 Ensure file deletion events by users are collected,1,2,1,1,grep delete /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.15 Ensure changes to system administration scope (sudoers) is collected,1,2,1,1,grep scope /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.16 Ensure system administrator actions (sudolog) are collected,1,2,1,1,grep actions /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.17 Ensure kernel module loading and unloading is collected,1,2,1,1,grep modules /etc/audit/audit.rules,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.1 Configure System Accounting (auditd),4.1.18 Ensure the audit configuration is immutable,1,2,1,1,grep '^\\s*[^#]' /etc/audit/audit.rules | tail -1,-e 2,TESTCASE_EQUAL,1
+4 Logging and Auditing,4.2 Configure Logging,4.2.1.1 Ensure rsyslog Service is enabled,1,1,1,1,chkconfig --list rsyslog 2> /dev/null | grep on,not null,TESTCASE_NOTNULL,1
+4 Logging and Auditing,4.2 Configure Logging,4.2.1.2 Ensure logging is configured,0,1,1,1,,,,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.1.3 Ensure rsyslog default file permissions configured,1,1,1,1,grep ^\\$FileCreateMode /etc/rsyslog.conf,640,TESTCASE_EQUAL,1
+4 Logging and Auditing,4.2 Configure Logging,4.2.1.4 Ensure rsyslog is configured to send logs to a remote log host,1,1,1,1,grep "^*.*[^I][^I]*@" /etc/rsyslog.conf,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts,0,1,2,1,grep -v '$ModLoad imtcp.so' /etc/rsyslog.conf,$ModLoad imtcp.so,TESTCASE_EQUAL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts,0,1,2,2,grep '$InputTCPServerRun' /etc/rsyslog.conf,$InputTCPServerRun 514,TESTCASE_EQUAL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.2.1 Ensure syslog-ng service is enabled,1,1,1,1,chkconfig --list syslog-ng 2> /dev/null | grep on,not null,TESTCASE_NOTNULL,1
+4 Logging and Auditing,4.2 Configure Logging,4.2.2.2 Ensure logging is configured,0,1,1,1,,,,
+4 Logging and Auditing,4.2 Configure Logging,4.2.2.3 Ensure syslog-ng default file permissions configured,1,1,1,1,grep ^options /etc/syslog-ng/syslog-ng.conf,perm(0640),TESTCASE_EQUAL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.2.4 Ensure syslog-ng is configured to send logs to a remote log host,0,1,1,1,grep ^destination /etc/syslog-ng/syslog-ng.conf,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.2.5 Ensure remote syslog-ng messages are only accepted on designated log hosts,0,1,1,1,grep "^destination remote" /etc/syslog-ng/syslog-ng.conf,not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.3 Ensure rsyslog or syslog-ng is installed,1,1,1,1,rpm -q rsyslog syslog-ng 2> /dev/null | grep -v "not installed",not null,TESTCASE_NOTNULL,0
+4 Logging and Auditing,4.2 Configure Logging,4.2.4 Ensure permissions on all logfiles are configured,1,1,1,1,,,,0
+4 Logging and Auditing,4.3 Ensure logrotate is configured,4.3 Ensure logrotate is configured,0,1,1,1,,,,0
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.1 Ensure cron daemon is enabled,1,1,1,1,chkconfig --list crond 2> /dev/null | grep on,not null,TESTCASE_NOTNULL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.2 Ensure permissions on /etc/crontab are configured,1,1,1,1,stat -c '%a' /etc/crontab,600,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.3 Ensure permissions on /etc/cron.hourly are configured,1,1,1,1,stat -c '%a' /etc/cron.hourly,600,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.4 Ensure permissions on /etc/cron.daily are configured,1,1,1,1,stat -c '%a' /etc/cron.daily,600,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.5 Ensure permissions on /etc/cron.weekly are configured,1,1,1,1,stat -c '%a' /etc/cron.weekly,600,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.6 Ensure permissions on /etc/cron.monthly are configured,1,1,1,1,stat -c '%a' /etc/cron.monthly,600,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.7 Ensure permissions on /etc/cron.d are configured,1,1,1,1,stat -c '%a' /etc/cron.d,600,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.8 Ensure at/cron is restricted to authorized users,1,1,4,1,stat -c '%a' /etc/cron.deny,null,TESTCASE_NULL,0
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.8 Ensure at/cron is restricted to authorized users,1,1,4,2,stat -c '%a' /etc/at.deny,null,TESTCASE_NULL,0
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.8 Ensure at/cron is restricted to authorized users,1,1,4,3,stat -c '%a' /etc/cron.allow,600,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.1 Configure cron,5.1.8 Ensure at/cron is restricted to authorized users,1,1,4,4,stat -c '%a' /etc/at.allow,600,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.1 Ensure permissions on /etc/ssh/sshd_config are configured,1,1,1,1,stat -c '%a' /etc/ssh/sshd_config,,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.2 Ensure SSH Protocol is set to 2,1,1,1,1,grep '^Protocol' /etc/ssh/sshd_config,Protocol 2,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.3 Ensure SSH LogLevel is set to INFO,1,1,1,1,grep '^LogLevel' /etc/ssh/sshd_config,LogLevel INFO,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.4 Ensure SSH X11 forwarding is disabled,1,1,1,1,grep '^X11Forwarding' /etc/ssh/sshd_config,X11Forwarding no,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.5 Ensure SSH MaxAuthTries is set to 4 or less,1,1,1,1,grep '^MaxAuthTries' /etc/ssh/sshd_config,MaxAuthTries 4,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.6 Ensure SSH IgnoreRhosts is enabled,1,1,1,1,grep '^IgnoreRhosts' /etc/ssh/sshd_config,IgnoreRhosts yes,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.7 Ensure SSH HostbasedAuthentication is disabled,1,1,1,1,grep '^HostbasedAuthentication' /etc/ssh/sshd_config,HostbasedAuthentication no,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.8 Ensure SSH root login is disabled,1,1,1,1,grep '^PermitRootLogin' /etc/ssh/sshd_config,PermitRootLogin no,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.9 Ensure SSH PermitEmptyPasswords is disabled,1,1,1,1,grep '^PermitEmptyPasswords' /etc/ssh/sshd_config,PermitEmptyPasswords no,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.10 Ensure SSH PermitUserEnvironment is disabled,1,1,1,1,grep PermitUserEnvironment /etc/ssh/sshd_config,PermitUserEnvironment no,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.11 Ensure only approved ciphers are used,1,1,1,1,grep 'Ciphers' /etc/ssh/sshd_config 2> /dev/null | grep -v '.*-cbc',aes,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.12 Ensure only approved MAC algorithms are used,1,1,1,1,grep 'MACs' /etc/ssh/sshd_config,hmac-sha2,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.13 Ensure SSH Idle Timeout Interval is configured,1,1,2,1,grep '^ClientAliveInterval' /etc/ssh/sshd_config,ClientAliveInterval 300,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.13 Ensure SSH Idle Timeout Interval is configured,1,1,2,2,grep "^ClientAliveCountMax" /etc/ssh/sshd_config,ClientAliveCountMax 0,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.14 Ensure SSH LoginGraceTime is set to one minute or less,1,1,1,1,grep '^LoginGraceTime' /etc/ssh/sshd_config,LoginGraceTime 60,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.15 Ensure SSH access is limited,1,1,1,1,grep "^AllowUsers" /etc/ssh/sshd_config,not null,TESTCASE_NOTNULL,0
+5 Access; Authentication and Authorization,5.2 SSH Server Configuration,5.2.16 Ensure SSH warning banner is configured,1,1,1,1,grep '^Banner' /etc/ssh/sshd_config,Banner /etc/issue.net,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.1 Ensure password creation requirements are configured,1,1,2,1,grep pam_cracklib.so /etc/pam.d/password-auth,not null,TESTCASE_NOTNULL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.1 Ensure password creation requirements are configured,1,1,2,2,grep pam_cracklib.so /etc/pam.d/system-auth,not null,TESTCASE_NOTNULL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.2 Ensure lockout for failed password attempts is configured,1,1,2,1,grep pam_faillock.so /etc/pam.d/password-auth,not null,TESTCASE_NOTNULL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.2 Ensure lockout for failed password attempts is configured,1,1,2,2,grep pam_faillock.so /etc/pam.d/system-auth,not null,TESTCASE_NOTNULL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.3 Ensure password reuse is limited,1,1,2,1,egrep '^password\\s+sufficient\\s+pam_unix.so' /etc/pam.d/password-auth,remember=5,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.3 Ensure password reuse is limited,1,1,2,2,egrep '^password\\s+sufficient\\s+pam_unix.so' /etc/pam.d/system-auth,remember=5,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.4 Ensure password hashing algorithm is SHA-512,1,1,2,1,egrep '^password\\s+sufficient\\s+pam_unix.so' /etc/pam.d/password-auth,sha512,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.3 Configure PAM,5.3.4 Ensure password hashing algorithm is SHA-512,1,1,2,2,egrep '^password\\s+sufficient\\s+pam_unix.so' /etc/pam.d/system-auth,sha512,TESTCASE_EQUAL,0
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.1.1 Ensure password expiration is 90 days or less,1,1,1,1,grep PASS_MAX_DAYS /etc/login.defs,PASS_MAX_DAYS 90,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.1.2 Ensure minimum days between password changes is 7 or more,1,1,1,1,grep PASS_MIN_DAYS /etc/login.defs,PASS_MIN_DAYS 7,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.1.3 Ensure password expiration warning days is 7 or more,1,1,1,1,grep PASS_WARN_AGE /etc/login.defs,PASS_WARN_AGE 7,TESTCASE_EQUAL,2
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.1.4 Ensure inactive password lock is 30 days or less,1,1,1,1,useradd -D | grep INACTIVE,INACTIVE=30,TESTCASE_EQUAL,3
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.2 Ensure system accounts are non-login,1,1,1,1,Function_542,null,TESTCASE_NULL,0
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.3 Ensure default group for the root account is GID 0,1,1,1,1,grep '^root:' /etc/passwd | cut -f4 -d:,0,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.4 Ensure default user umask is 027 or more restrictive,1,1,2,1,grep '^umask' /etc/bashrc,umask 027,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.4 User Accounts and Environment,5.4.4 Ensure default user umask is 027 or more restrictive,1,1,2,2,grep '^umask' /etc/profile,umask 027,TESTCASE_EQUAL,1
+5 Access; Authentication and Authorization,5.5 Ensure root login is restricted to system console,5.5 Ensure root login is restricted to system console,0,1,1,1,,,,0
+5 Access; Authentication and Authorization,5.6 Ensure access to the su command is restricted,5.6 Ensure access to the su command is restricted,1,1,1,1,grep pam_wheel.so /etc/pam.d/su,auth required pam_wheel.so use_uid,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.1 Audit system file permissions,0,2,1,1,,,,0
+6 System Maintenance,6.1 System File Permissions,6.1.2 Ensure permissions on /etc/passwd are configured,1,1,1,1,stat -c '%a' /etc/passwd,644,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.3 Ensure permissions on /etc/shadow are configured,1,1,1,1,stat -c '%a' /etc/shadow,0,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.4 Ensure permissions on /etc/group are configured,1,1,1,1,stat -c '%a' /etc/group,644,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.5 Ensure permissions on /etc/gshadow are configured,1,1,1,1,stat -c '%a' /etc/gshadow,600,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.6 Ensure permissions on /etc/passwd- are configured,1,1,1,1,stat -c '%a' /etc/passwd-,600,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.7 Ensure permissions on /etc/shadow- are configured,1,1,1,1,stat -c '%a' /etc/shadow-,600,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.8 Ensure permissions on /etc/group- are configured,1,1,1,1,stat -c '%a' /etc/group-,600,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.9 Ensure permissions on /etc/gshadow- are configured,1,1,1,1,stat -c '%a' /etc/gshadow-,600,TESTCASE_EQUAL,1
+6 System Maintenance,6.1 System File Permissions,6.1.10 Ensure no world writable files exist,1,1,1,1,Function_6110,null,TESTCASE_NULL,0
+6 System Maintenance,6.1 System File Permissions,6.1.11 Ensure no unowned files or directories exist,1,1,1,1,Function_6111,null,TESTCASE_NULL,0
+6 System Maintenance,6.1 System File Permissions,6.1.12 Ensure no ungrouped files or directories exist,1,1,1,1,Function_6112,null,TESTCASE_NULL,0
+6 System Maintenance,6.1 System File Permissions,6.1.13 Audit SUID executables,0,1,1,1,Function_6113,null,TESTCASE_NULL,0
+6 System Maintenance,6.1 System File Permissions,6.1.14 Audit SGID executables,0,1,1,1,Function_6114,null,TESTCASE_NULL,0
+6 System Maintenance,6.2 User and Group Settings,6.2.1 Ensure password fields are not empty,1,1,1,1,Function_621,null,TESTCASE_NULL,0
+6 System Maintenance,6.2 User and Group Settings,6.2.2 Ensure no legacy '+' entries exist in /etc/passwd,1,1,1,1,grep '^+:' /etc/passwd,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.3 Ensure no legacy '+' entries exist in /etc/shadow,1,1,1,1,grep '^+:' /etc/shadow,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.4 Ensure no legacy '+' entries exist in /etc/group,1,1,1,1,grep '^+:' /etc/group,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.5 Ensure root is the only UID 0 account,1,1,1,1,Function_625,root,TESTCASE_EQUAL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.6 Ensure root PATH Integrity,1,1,1,1,Function_626,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.7 Ensure all users' home directories exist,1,1,1,1,Function_627,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.8 Ensure users' home directories permissions are 750 or more restrictive,1,1,1,1,Function_628,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.9 Ensure users own their home directories,1,1,1,1,Function_629,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.10 Ensure users' dot files are not group or world writable,1,1,1,1,Function_6210,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.11 Ensure no users have .forward files,1,1,1,1,Function_6211,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.12 Ensure no users have .netrc files,1,1,1,1,Function_6212,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.13 Ensure users' .netrc Files are not group or world accessible,1,1,1,1,Function_6213,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.14 Ensure no users have .rhosts files,1,1,1,1,Function_6214,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.15 Ensure all groups in /etc/passwd exist in /etc/group,1,1,1,1,Function_6215,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.16 Ensure no duplicate UIDs exist,1,1,1,1,Function_6216,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.17 Ensure no duplicate GIDs exist,1,1,1,1,Function_6217,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.18 Ensure no duplicate user names exist,1,1,1,1,Function_6218,null,TESTCASE_NULL,1
+6 System Maintenance,6.2 User and Group Settings,6.2.19 Ensure no duplicate group names exist,1,1,1,1,Function_6219,null,TESTCASE_NULL,1
